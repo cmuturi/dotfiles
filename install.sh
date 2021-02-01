@@ -39,10 +39,10 @@ cp ~/.vimrc ~/.dotfiles_bak
 unlink ~/.vimrc
 cp ~/.zshrc ~/.dotfiles_bak
 unlink ~/.zshrc
-cp ~/.gitconfig ~/.dotfiles_bak
-unlink ~/.gitconfig
 cp ~/.config/nvim/init.vim ~/.dotfiles_bak
 unlink ~/.config/nvim/init.vim
+cp ~/.config/nvim/coc-settings.json ~/.dotfiles_bak
+unlink ~/.config/nvim/coc-settings.json
 
 echo ""
 echo "*** Finished backing up"
@@ -91,8 +91,8 @@ echo ""
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 echo ""
 echo "*** dotfiles are the latest now!"
@@ -102,9 +102,12 @@ echo ""
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Install nodejs (for coc.nvim)
+curl -sL install-node.now.sh/lts | bash
+
 # Install Vundle PlugIns
-echo | echo | vim +PlugInstall +qall
-echo | echo | nvim +PlugInstall +qall
+echo | echo | vim +PlugInstall +CocInstall coc-python +qall
+echo | echo | nvim +PlugInstall +CocInstall coc-python +qall
 
 # Set ZSH to be default shell
 chsh -s /bin/zsh
