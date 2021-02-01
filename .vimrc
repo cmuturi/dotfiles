@@ -32,7 +32,7 @@ cnoremap jk <Esc>
 cnoremap kj <Esc>
 
 " Forward delete
-inoremap <C-l> <Del>
+inoremap <C-x> <Del>
 
 " Indent selected text by pressing tab key
 vmap <tab> >gv

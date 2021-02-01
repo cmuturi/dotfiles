@@ -106,8 +106,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 curl -sL install-node.now.sh/lts | bash
 
 # Install Vundle PlugIns
-echo | echo | vim +PlugInstall +CocInstall coc-python +qall
-echo | echo | nvim +PlugInstall +CocInstall coc-python +qall
+echo | echo | vim +PlugInstall +qall
+echo | echo | nvim +PlugInstall +qall
 
 # Set ZSH to be default shell
 chsh -s /bin/zsh
