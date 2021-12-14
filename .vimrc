@@ -1,6 +1,5 @@
 call plug#begin()
 	Plug 'cmuturi/bliss'
-	Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 	Plug 'tpope/vim-fugitive'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'Yggdroot/indentLine'
@@ -10,6 +9,8 @@ call plug#begin()
 	Plug 'tpope/vim-commentary'
 	Plug 'mhinz/vim-startify'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -55,10 +56,17 @@ let g:ansible_unindent_after_newline = 1
 let g:ansible_name_highlight = 'd'
 let g:ansible_extra_keywords_highlight = 1
 
+" support undo when reopening file
 if has('persistent_undo')
     " Maintain undo history between sessions
     set undofile
     set undodir=~/.vim/undodir
+endif
+
+" open file last position
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

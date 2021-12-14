@@ -1,6 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+export TERM=xterm-256color
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -9,16 +10,17 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/cmuturi/.oh-my-zsh"
+export HOME=/users/cmuturi
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random teme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="minimal"
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+source /users/cmuturi/.oh-my-zsh/custom/themes/powerlevel420k/powerlevel10k.zsh-theme
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -139,7 +141,7 @@ if _has fzf && _has rg && _has bat; then
       '
   # Bat
   export BAT_THEME="OneHalfDark"
-  #alias cat="bat"
+  alias cat="bat"
   alias es='nvim $(fzf --preview "bat --style=numbers --color=always {} | head -500")'
   alias gco='git checkout $(git branch |fzf)'
 fi
@@ -157,16 +159,14 @@ alias ezsh="vi ~/.zshrc"
 alias eohmyzsh="vi ~/.oh-my-zsh"
 alias ll="ls -la"
 alias hm="cd ~/"
-alias apire="source /Users/cmuturi/Documents/IAC/.virtualenvs/apirenv/bin/activate; cd /Users/cmuturi/Documents/IAC/api_router/"
-alias apirs="source /Users/cmuturi/Documents/IAC/.virtualenvs/apirenv/bin/activate; python /Users/cmuturi/Documents/IAC/api_router/manage.py runserver 4500"
-alias anse="source /Users/cmuturi/Documents/IAC/.virtualenvs/iacansenv/bin/activate; cd /Users/cmuturi/Documents/IAC/iac-ansible/"
-alias awx="source /Users/cmuturi/Documents/IAC/.virtualenvs/iacansenv/bin/activate; cd /Users/cmuturi/Documents/IAC/iac-awx/"
+alias apire="source /users/cmuturi/Documents/IAC/.virtualenvs/apirenv/bin/activate; cd /users/cmuturi/Documents/IAC/api_router/"
+alias apirs="source /users/cmuturi/Documents/IAC/.virtualenvs/apirenv/bin/activate; python /sers/cmuturi/Documents/IAC/api_router/manage.py runserver 4500"
+alias anse="source /users/cmuturi/Documents/IAC/.virtualenvs/iacansenv/bin/activate; cd /users/cmuturi/Documents/IAC/iac-ansible/"
 alias vi="nvim"
 alias vim="nvim"
-alias mvim="nvim"
 alias de="deactivate"
 alias ide="./ide"
 alias zogs="ssh zogs"
 
 
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export PATH="/usr/bin/python3/bin:$PATH"
